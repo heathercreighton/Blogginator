@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+<h1>BLOGGINATOR!</h1>
+</div>
+
+    <% @blog_posts.each do |blog_post| %>
+  <div class="panel panel-default">
+    
+    <div class="panel-heading">
+      
+        <h2><%= blog_post.title %></h2>
+        <h4>By: <%= blog_post.user.username %></h4>
+        <p><%= blog_post.created_at %><p>
+        
+    </div>
+    
+    <div class="panel-body">
+      
+        <p><%= blog_post.blog_entry %></p>
+        
+      </div>  
+      <div class="panel-footer">
+        
+        <div class="btn-group" role="group" aria-label="...">
+        <%= link_to 'Show', blog_post, class: "btn"%>
+        <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn" %>
+        <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+    </div>
+    </div>
+    
+  </div>
+  
+    <% end %>
+
+
+<%= link_to 'New Blog post', new_blog_post_path, class: "btn" %>
